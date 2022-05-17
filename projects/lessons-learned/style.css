@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-decoration: none;
+}
+
+body {
+  background-color: rgb(253, 251, 251);
+  font-size: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#cabecalho {
+  background-color: rgb(170, 180, 177);
+  color: rgb(17, 127, 223);
+  position: fixed;
+  width: 100%;
+  padding: 20px;
+}
+
+#titulo {
+  text-align: center;
+}
+
+#lista-menu {
+  list-style: none;
+}
+
+#nav-bar {
+  position: absolute;
+  top: 5px;
+  padding: 5px;
+}
+
+#minha_foto {
+  width: 200px;
+  top: 100px;
+  position: relative;
+  float: left;
+}
+
+#h1 {
+  position: relative;
+  left: 250px;
+  margin-bottom: 17px;
+}
+
+#licoes {
+  width: 100%;
+  position: relative;
+  top: 90px;
+  left: 80px;
+  line-height: 25px;
+  font-size: 18px;
+}
+
+#licoes_aprendidas {
+  float: left;
+  list-style: none;
+}
+
+#licoes_a_aprender {
+  float: right;
+  width: 47%;
+  list-style: none;
+}
+
+#h2 {
+  position: relative;
+  top: 360px;
+  left: 115px;
+}
+
+#meu-aprendizado {
+  float: left;
+  text-align: justify;
+  width: 51%;
+  line-height: 25px;
+  position: relative;
+  top: 150px;
+}
+
+#passagem-aprendizado {
+  float: right;
+  text-align: justify;
+  width: 41.1%;
+  line-height: 25px;
+  position: relative;
+  top: 150px;
+}
+
+table , td , th {
+  border: 1px solid;
+  text-align: center;
+}
+
+table {
+  width: 51%;
+  border-collapse: collapse;
+  position: relative;
+  top: 200px;
+}
+
+#rodape {
+  position: relative;
+  top: 230px;
+}
