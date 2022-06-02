@@ -118,8 +118,8 @@ function colorGenerator() {
 }
 
 // Botao para mudar as cores da paleta
-//const changeColors = document.getElementById('change-colors');
-//changeColors.addEventListener('click', printPixel);
+const changeColors = document.getElementById('change-colors');
+changeColors.addEventListener('click', printPixel);
 
 // Animacao do fundo
 function speedBubbles(x) {
