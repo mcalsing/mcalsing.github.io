@@ -1,0 +1,137 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#title {
+  text-align: center;
+  margin-bottom: 10px;
+  color: white;
+  padding: 20px;
+  font-size: 45px;
+}
+
+#color-palette {
+  border: 1px solid black;
+  padding: 5px;
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.color {
+  border: 1px solid black;
+  display: inline-block;
+  border-radius: 35%;
+  width: 35px;
+  height: 30px;
+  margin: 3px;
+}
+
+#pixel-board {
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 0px;
+}
+
+.pixel {
+  border: 1px solid black;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+}
+
+#botoes {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#clear-board , #generate-board {
+  padding: 3px;
+}
+
+#board-size {
+  padding: 3px;
+}
+
+.change-colors {
+  padding: 3px;
+  width: 60px;
+  height: 35px;
+  margin: 3px;
+}
+
+#quant-bubblesup , #speed-bubblesup , #quant-bubblesdown , #speed-bubblesdown {
+  padding: 3px;
+  width: 30px;
+  height: 25px;
+  margin: 3px;
+}
+
+#quant , #speed {
+  display: inline;
+  color: white;
+}
+
+#menu-bubbles {
+  position: absolute;
+}
+
+footer {
+  text-align: center;
+  margin-top: 150px;
+  background-color: #5478ad;
+  padding: 10px;
+}
+
+footer #creditos {
+  color: #352727;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+body {
+  min-height: 10vh;
+  background: #1e3e6e;
+}
+
+#bubbles {
+  position: relative;
+  display: flex;
+  z-index: -1;
+}
+
+#bubbles span {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  background: #4fc3dc;
+  margin: 0 4px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px #4fc3dc44, 0 0 50px #4fc3dc, 0 0 100px #4fc3dc;
+  animation: animate 15s linear infinite;
+  animation-duration: calc(115s / var(--i));
+}
+#bubbles span:nth-child( even ) {
+  background: #ff2d75;
+  box-shadow: 0 0 0 10px #ff2d7544, 0 0 50px #ff2d75, 0 0 100px #ff2d75;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(75vh) scale(0);
+  }
+  100% {
+    transform: translateY(-10vh) scale(1);
+  }
+}
