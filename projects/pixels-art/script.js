@@ -12,8 +12,9 @@ for (let i = 0; i < 4; i += 1) createPixelPalette();
 
 // Preenche as outras 3 cores na peleta.
 function printPixel() {
-  for (let i = 0; i <= 3; i += 1) {
+  for (let i = 1; i <= 3; i += 1) {
     document.querySelectorAll('.color')[i].style.background = colorGenerator();
+    //document.querySelector('#color-palette').children[i].style.background = colorGenerator();
   }
 }
 printPixel();
@@ -117,9 +118,10 @@ function colorGenerator() {
   return rgb;
 }
 
+
 // Botao para mudar as cores da paleta
-const changeColors = document.getElementById('change-colors');
-changeColors.addEventListener('click', printPixel);
+//const changeColors = document.getElementById('change-colors');
+//changeColors.addEventListener('click', printPixel);
 
 // Animacao do fundo
 function speedBubbles(x) {
@@ -185,15 +187,17 @@ changeQuantDown.addEventListener('click', createBubblesDown);
 // Requisito 6
 window.onload = corPretaSelected;
 
-function corPretaSelected() {
-  document.querySelector('.color').classList.add('selected');
 
-  let clickToPrintPixel = document.getElementById('pixel-board');
-  clickToPrintPixel = addEventListener('click', printPixelBoard);
+  function corPretaSelected() {
 
-  function printPixelBoard(eventOrigin) {
-    if (eventOrigin.target.className === 'pixel') {
-      eventOrigin.target.style.background = 'black';
+    document.querySelector('.color').classList.add('selected');
+
+    let clickToPrintPixel = document.getElementById('pixel-board');
+    clickToPrintPixel = addEventListener('click', printPixelBoard);
+
+    function printPixelBoard(eventOrigin) {
+      if (eventOrigin.target.className === 'pixel') {
+        eventOrigin.target.style.background = 'black';
+      }
     }
   }
-}
