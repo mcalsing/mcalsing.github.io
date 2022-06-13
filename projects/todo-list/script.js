@@ -7,12 +7,16 @@ const itemSelecionado = document.querySelector('.selected')
 // Requisito 5: Ao apertar o botao uma nova terefa eh criada ao final da lista e imput limpo
 botaoCriaTarefa.addEventListener('click', criaTarefa);
 function criaTarefa (eventOrigin){
-    const novaLi = document.createElement('li');
-    novaLi.innerText = textoTarefa.value;
-    document.getElementById('lista-tarefas').appendChild(novaLi);
-    textoTarefa.value = '';
-    
+    if (textoTarefa.value !== '') {
+        const novaLi = document.createElement('li');
+        novaLi.innerText = textoTarefa.value;
+        document.getElementById('lista-tarefas').appendChild(novaLi);
+        textoTarefa.value = '';
+    }
 }
+
+/* const newCheckbox = document.createElement('span');
+newCheckbox.className = 'far fa-square checkbox'; */
 
 // Requisito 7 e 8: Preenche e remove o background do item na lista
 const itemCinza = addEventListener('click', pintaFundo);
@@ -34,11 +38,6 @@ function tarefaCompleta(eventOrigin){
         //eventOrigin.target.className = 'completed';
         eventOrigin.target.classList.toggle('completed');
     }
-    //else if (eventOrigin.target.className === 'completed selected'){
-        //console.log('entrei no remove');
-        //eventOrigin.target.classList.remove('completed');
-        //eventOrigin.target.classList.remove('completed selected');
-    //}
 }
 
 // Requisito 10: Adicione um botão que quando clicado deve apagar todos os itens da lista
@@ -122,6 +121,7 @@ removeSelecionado.addEventListener('click', botaoRemoverSelecionado);
 function botaoRemoverSelecionado(eventOrigin){
     document.querySelector('.selected').remove();
 }
+
 
 window.onload = function() {
     insereListaNoDom();

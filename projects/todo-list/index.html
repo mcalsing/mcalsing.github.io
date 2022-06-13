@@ -6,22 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/3da1a747b2.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>Minha Lista de Tarefas</header>
-    <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
+    <header>
+        <h1>Minha Lista de Tarefas</h1>
 
-    <button id="criar-tarefa">Criar tarefa</button>
-    <input id="texto-tarefa" type="text" placeholder="Adicione um item a lista">
-    <button id="mover-cima">Mover cima</button>
-    <button id="mover-baixo">Mover baixo</button>
+    </header>
+    <main>
+        <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
+        
+        <div id="div-superior">
+            <button id="criar-tarefa">Criar tarefa</button>
+            <input id="texto-tarefa" type="text" placeholder="Adicione um item a lista">
+            <button id="mover-cima">⬆</button>
+            <button id="mover-baixo">⬇</button>
+        </div>
 
-    <ol id="lista-tarefas"></ol>
+        <ul id="lista-tarefas">
+            <!-- <span class="fa fa-home"> teste</span> -->
+        </ul>
 
-    <button id="apaga-tudo">Apagar Lista</button>
-    <button id="remover-finalizados">Apagar finalizados</button>
-    <button id="salvar-tarefas">Salvar tarefas</button>
-    <button id="remover-selecionado">Remove selecionado</button>
+        <div id="div-inferior">
+            <button id="salvar-tarefas">Salvar tarefas</button>
+            <button id="remover-finalizados">Apagar finalizados</button>
+            <button id="remover-selecionado">Remove selecionado</button>
+            <button id="apaga-tudo">Apagar Lista</button>
+        </div>
+    </main>
 
     <script src="script.js"></script>
 </body>

@@ -1,7 +1,7 @@
-/**{
+{
     margin: 0;
     padding: 0;
-}*/
+}
 
 .completed{
     text-decoration: line-through;
@@ -10,3 +10,75 @@
 .selected{
     background: gray;
 }
+
+body {
+    background: rgb(208, 219, 236);
+}
+
+header{
+    display: flex;
+    justify-content: center;
+}
+
+main{
+    background: rgb(153, 186, 235);
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    border-radius: 20px;
+}
+
+#funcionamento {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+
+#lista-tarefas {
+    margin-left: 65px;
+}
+
+#div-superior {
+    display: flex;
+    justify-content:space-evenly;
+    margin: 0 175px;
+}
+
+#div-superior button {
+    padding: 3px;
+}
+
+#div-inferior {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 15px 70px;
+}
+
+/* Estilo Botoes */
+
+#criar-tarefa {
+    background-color: rgb(97, 253, 97);
+    border-radius: 5px;
+}
+
+#apaga-tudo {
+    background: rgb(207, 84, 84);
+    border-radius: 5px;
+}
+
+#remover-finalizados {
+    background: yellow;
+    border-radius: 5px;
+}
+
+#salvar-tarefas {
+    background: greenyellow;
+    border-radius: 5px;
+}
+
+#remover-selecionado {
+    background: rgb(187, 175, 175);
+    border-radius: 5px;
+}
+
