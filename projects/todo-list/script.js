@@ -15,9 +15,6 @@ function criaTarefa (eventOrigin){
     }
 }
 
-/* const newCheckbox = document.createElement('span');
-newCheckbox.className = 'far fa-square checkbox'; */
-
 // Requisito 7 e 8: Preenche e remove o background do item na lista
 const itemCinza = addEventListener('click', pintaFundo);
 function pintaFundo (eventOrigin){
@@ -80,18 +77,6 @@ function insereListaNoDom (){
     }
 }
 
-// Requito 13: Mover item selecionado para cima. Funcionando!
-/*const moveSelecionadoUp = document.getElementById('mover-cima');
-moveSelecionadoUp.addEventListener('click', botaoMoverSelecionadoUp);
-function botaoMoverSelecionadoUp(eventOrigin){
-    for (let i = 1; i < listaTarefas.length; i += 1) {
-        //console.log('entrou no for botao cima');
-        if (listaTarefas[i].className === 'selected' || listaTarefas[i].className === 'selected completed'){
-            //console.log('entrou no if botao cima');
-            listaTarefas[i].insertAdjacentElement('afterend', listaTarefas[i-1]);
-        }
-    }
-}*/
 
 // Requisito 13: Mover item selecionado para cima.
 const moveSelecionadoUp = document.getElementById('mover-cima');

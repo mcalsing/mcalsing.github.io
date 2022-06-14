@@ -1,13 +1,8 @@
-{
-    margin: 0;
-    padding: 0;
-}
-
-.completed{
+.completed {
     text-decoration: line-through;
 }
 
-.selected{
+.selected {
     background: gray;
 }
 
@@ -15,12 +10,12 @@ body {
     background: rgb(208, 219, 236);
 }
 
-header{
+header {
     display: flex;
     justify-content: center;
 }
 
-main{
+main {
     background: rgb(153, 186, 235);
     display: flex;
     flex-direction: column;
