@@ -29,7 +29,7 @@ const loop = setInterval(() => {
 function shotBullet() {
      const newShot = document.createElement('div');
      newShot.className = 'bullet shot';
-     gameBoard.appendChild(newShot);
+     box.appendChild(newShot);
      setTimeout(() => {
         document.querySelector('.shot').remove();
      }, 900);

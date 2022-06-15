@@ -33,8 +33,8 @@
     height: 15px;
     background: gray;
     position: absolute;
-    bottom: 60px;
-    left: 275px;
+    bottom: 50px;
+    left: 22px;
 }
 
 .shot {
@@ -57,6 +57,6 @@
     }
 
     to {
-        bottom: 100%
+        bottom: 480px;
     }
 }
