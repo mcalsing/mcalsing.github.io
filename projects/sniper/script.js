@@ -26,6 +26,7 @@ const loop = setInterval(() => {
 
 }, 20);
 
+// Cria a div que funciona como um tiro saindo da nave.
 function shotBullet() {
      const newShot = document.createElement('div');
      newShot.className = 'bullet shot';
@@ -35,5 +36,5 @@ function shotBullet() {
      }, 900);
 }
 
-document.addEventListener('keyup', shotBullet);
+document.addEventListener('click', shotBullet);
 
