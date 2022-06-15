@@ -37,4 +37,3 @@ function shotBullet() {
 }
 
 document.addEventListener('click', shotBullet);
-
