@@ -41,6 +41,10 @@
     animation: bullet-animation 1s linear;
 }
 
+.instrucao {
+    text-align: center;
+}
+
 @keyframes rock-animation {
     from {
        top: -53px; 
