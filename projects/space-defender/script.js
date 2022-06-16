@@ -20,7 +20,7 @@ function createRock() {
 createRock();
 
 // Modificador de velocidade de deslocamento horizontal da nave.
-let modifier = 5;
+let modifier = 8;
 
 // Movimentação horizontal da nave
 window.addEventListener("keydown", (eventOrigin) => {
