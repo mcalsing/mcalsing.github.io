@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.game-board {
+    width: 80%;
+    border: 1px solid black;
+    height: 500px;
+    margin: 50px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.rock {
+    position: absolute;
+    width: 80px;
+    animation: rock-animation 3s infinite linear;
+}
+
+.box {
+    width: 50px;
+    height: 50px;
+    background: black;
+    position: absolute;
+    bottom: 10px;
+    left: 250px;
+}
+
+.bullet {
+    width: 5px;
+    height: 15px;
+    background: gray;
+    position: absolute;
+    bottom: 50px;
+    left: 22px;
+}
+
+.shot {
+    animation: bullet-animation 1s linear;
+}
+
+.instrucao {
+    text-align: center;
+}
+
+@keyframes rock-animation {
+    from {
+       top: -53px; 
+    }
+
+    to {
+        top: 100%;
+    }
+}
+
+@keyframes bullet-animation {
+    from {
+        bottom: 60px;
+    }
+
+    to {
+        bottom: 480px;
+    }
+}
