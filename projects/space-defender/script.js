@@ -1,9 +1,23 @@
 const box = document.querySelector('.box');
-const rock = document.querySelector('.rock');
 const bullet = document.querySelector('.bullet');
 const gameBoard = document.querySelector('.game-board');
 
-// Modificador de velocidade de deslocamento horizontal.
+function randomRockPosition() {
+    let randomPosition = Math.floor(Math.random() * 500);
+    return randomPosition;
+}
+
+function createRock() {
+    const newRock = document.createElement('img');
+    newRock.src = './imagens/rock.webp';
+    newRock.className = 'rock';
+    newRock.style.left = `${randomRockPosition()}px`
+    gameBoard.appendChild(newRock);
+    return newRock;
+}
+createRock();
+
+// Modificador de velocidade de deslocamento horizontal da nave.
 let modifier = 5;
 
 // Movimentacao horizontal do nave
@@ -18,25 +32,31 @@ window.addEventListener("keydown", (eventOrigin) => {
 // Verifica a posicao da rock e da box a cada 100ms, para aplicar colisao
 const loop = setInterval(() => {
     const shot = document.querySelector('.shot');
+    const rock = document.querySelector('.rock');
 
     const rockPositionV = +window.getComputedStyle(rock).bottom.replace('px', '');
-    console.log(rockPositionV);
-    const boxPosition = box.offsetLeft;
+    const rockPositionH = rock.offsetLeft;
+    console.log(rockPositionH);
+    const boxPositionV = box.offsetLeft;
     const shotPositionH = box.offsetLeft + 13;
     
     // Verifica a posicao da pedra em relacao ao tiro, para aplicar colisao
     if (shot !== null) {
-        const shotPositionV = +window.getComputedStyle(shot).bottom.replace('px', '');
-        diferencaShotToRock = Math.abs(rockPositionV - shotPositionV);
+        const shotPositionV = 
+        +window.getComputedStyle(shot).bottom.replace('px', '');
+        diferencaShotToRockV = Math.abs(rockPositionV - shotPositionV);
+
 
         // Quando o tiro atinge a pedra, ela eh removida
-        if (diferencaShotToRock <= 15 && shotPositionH < 80) {
-            document.querySelector('.rock').remove();
+        if (diferencaShotToRockV <= 15 && shotPositionH < 80) {
+            rock.remove();
+            shot.remove();
+            createRock();
         }
     }
     
     // Quando a nave e a pedra colidem, o jogo eh parado
-    if (rockPositionV < 60 && rockPositionV > 1 && boxPosition < 80 ) {
+    if (rockPositionV < 60 && rockPositionV > 1 && boxPositionV < 80 ) {
         rock.style.animation = 'none';
         rock.style.bottom = `${rockPositionV}px`
         console.log('Perdeu!');
@@ -50,7 +70,9 @@ function shotBullet() {
      newShot.className = 'shot bullet';
      box.appendChild(newShot);
      setTimeout(() => {
-        document.querySelector('.shot').remove();
+         if (document.querySelector('.shot') !== null) {
+             document.querySelector('.shot').remove();
+         }
      }, 900);
 }
 
