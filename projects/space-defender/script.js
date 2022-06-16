@@ -1,15 +1,17 @@
-const box = document.querySelector('.box');
+const spaceshipBox = document.querySelector('.spaceship-box');
 const bullet = document.querySelector('.bullet');
 const gameBoard = document.querySelector('.game-board');
+const score = document.querySelector('.score');
+let hitCounter = 0;
 
 function randomRockPosition() {
-    let randomPosition = Math.floor(Math.random() * 500);
+    let randomPosition = Math.floor(Math.random() * 720);
     return randomPosition;
 }
 
 function createRock() {
     const newRock = document.createElement('img');
-    newRock.src = './imagens/rock.webp';
+    newRock.src = './imagens/rock.png';
     newRock.className = 'rock';
     newRock.style.left = `${randomRockPosition()}px`
     gameBoard.appendChild(newRock);
@@ -20,50 +22,48 @@ createRock();
 // Modificador de velocidade de deslocamento horizontal da nave.
 let modifier = 5;
 
-// Movimentacao horizontal do nave
+// Movimentação horizontal da nave
 window.addEventListener("keydown", (eventOrigin) => {
     switch (eventOrigin.key) {
-        case 'Enter': box.style.left = `${250}px`; break;
-        case 'ArrowLeft': box.style.left = `${parseInt(box.style.left) - modifier}px`; break;
-        case 'ArrowRight': box.style.left = `${parseInt(box.style.left) + modifier}px`; break;
+        case 'Enter': spaceshipBox.style.left = `${390}px`; break;
+        case 'ArrowLeft': spaceshipBox.style.left = `${parseInt(spaceshipBox.style.left) - modifier}px`; break;
+        case 'ArrowRight': spaceshipBox.style.left = `${parseInt(spaceshipBox.style.left) + modifier}px`; break;
     }
 });
 
-// Verifica a posicao da rock e da box a cada 100ms, para aplicar colisao
+// Verifica a posição da rock e da nave a cada 30ms, para aplicar colisão
 const loop = setInterval(() => {
     const shot = document.querySelector('.shot');
     const rock = document.querySelector('.rock');
 
     const rockPositionV = +window.getComputedStyle(rock).bottom.replace('px', '');
     const rockPositionH = rock.offsetLeft;
-    //console.log(rockPositionH);
-    const boxPositionH = box.offsetLeft;
-    const shotPositionH = box.offsetLeft + 12.5;
-    //console.log(shotPositionH);
+    const boxPositionH = spaceshipBox.offsetLeft;
+    const shotPositionH = spaceshipBox.offsetLeft + 33;
     
-    // Verifica a posicao da pedra em relacao ao tiro, para aplicar colisao
+    // Verifica a posição da pedra em relação ao tiro, para aplicar colisão
     if (shot !== null) {
         const shotPositionV = +window.getComputedStyle(shot).bottom.replace('px', '');
         diferencaShotToRockV = Math.abs(rockPositionV - shotPositionV);
         diferencaShotToRockH = shotPositionH - rockPositionH;
-        //console.log(diferencaShotToRockH);
 
-        // Quando o tiro atinge a pedra, ela é removida
-        if (diferencaShotToRockV <= 15 && 
-            diferencaShotToRockH >= -12.5 && diferencaShotToRockH < 67.5) {
+        // Quando o tiro atinge a pedra, ela é removida e criada em um lugar aleatório
+        if (diferencaShotToRockV <= 15 && diferencaShotToRockH > -6 && diferencaShotToRockH < 81) {
+            hitCounter += 1;
+            score.innerText = 'Score: ' + hitCounter;
             rock.remove();
             shot.remove();
             createRock();
         }
     }
     
-    // Quando a nave e a pedra colidem, o jogo eh parado
+    // Quando a nave e a pedra colidem, o jogo é parado
     diferencaShipToRockH = rockPositionH - boxPositionH;
-    //console.log(diferencaShipToRockH);
-    if (diferencaShipToRockH < 50 && rockPositionV < 60 && diferencaShipToRockH > -80) {
+    if (diferencaShipToRockH < 68 && rockPositionV < 55 && diferencaShipToRockH > -79) {
         rock.style.animation = 'none';
-        rock.style.bottom = `${rockPositionV}px`
-        console.log('Perdeu!');
+        //rock.style.bottom = `${rockPositionV}px`
+        hitCounter = 0;
+        alert('Game Over!')
     }
 
 }, 30);
@@ -72,12 +72,12 @@ const loop = setInterval(() => {
 function shotBullet() {
      const newShot = document.createElement('div');
      newShot.className = 'shot bullet';
-     box.appendChild(newShot);
+     spaceshipBox.appendChild(newShot);
      setTimeout(() => {
          if (document.querySelector('.shot') !== null) {
              document.querySelector('.shot').remove();
          }
-     }, 900);
+     }, 1020); // Alcance do tiro
 }
 
 document.addEventListener('click', shotBullet);
