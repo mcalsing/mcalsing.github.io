@@ -38,16 +38,19 @@ const loop = setInterval(() => {
     const rockPositionH = rock.offsetLeft;
     //console.log(rockPositionH);
     const boxPositionH = box.offsetLeft;
-    const shotPositionH = box.offsetLeft + 13;
-    console.log(shotPositionH);
+    const shotPositionH = box.offsetLeft + 12.5;
+    //console.log(shotPositionH);
     
     // Verifica a posicao da pedra em relacao ao tiro, para aplicar colisao
     if (shot !== null) {
         const shotPositionV = +window.getComputedStyle(shot).bottom.replace('px', '');
         diferencaShotToRockV = Math.abs(rockPositionV - shotPositionV);
+        diferencaShotToRockH = shotPositionH - rockPositionH;
+        //console.log(diferencaShotToRockH);
 
         // Quando o tiro atinge a pedra, ela é removida
-        if (diferencaShotToRockV <= 15 && shotPositionH < 80) {
+        if (diferencaShotToRockV <= 15 && 
+            diferencaShotToRockH >= -12.5 && diferencaShotToRockH < 67.5) {
             rock.remove();
             shot.remove();
             createRock();
@@ -55,15 +58,15 @@ const loop = setInterval(() => {
     }
     
     // Quando a nave e a pedra colidem, o jogo eh parado
-    diferencaShipToRockH = Math.abs(rockPositionH - boxPositionH);
+    diferencaShipToRockH = rockPositionH - boxPositionH;
     //console.log(diferencaShipToRockH);
-    if (diferencaShipToRockH < 65 && rockPositionV < 60 && rockPositionV > 1) {
+    if (diferencaShipToRockH < 50 && rockPositionV < 60 && diferencaShipToRockH > -80) {
         rock.style.animation = 'none';
         rock.style.bottom = `${rockPositionV}px`
         console.log('Perdeu!');
     }
 
-}, 3000);
+}, 30);
 
 // Cria a div que funciona como um tiro saindo da nave.
 function shotBullet() {
