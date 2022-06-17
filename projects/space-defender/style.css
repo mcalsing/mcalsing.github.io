@@ -54,6 +54,10 @@ body {
     color: white;
 }
 
+.speed {
+    color: white;
+}
+
 @keyframes rock-animation {
     from {
        top: -53px; 

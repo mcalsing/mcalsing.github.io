@@ -2,7 +2,11 @@ const spaceshipBox = document.querySelector('.spaceship-box');
 const bullet = document.querySelector('.bullet');
 const gameBoard = document.querySelector('.game-board');
 const score = document.querySelector('.score');
-let hitCounter = 0;
+const speed = document.querySelector('.speed');
+// Contador de acertos ao asteroide
+let hitCount = 0;
+// Modificador de velocidade de deslocamento horizontal da nave.
+let baseSpeed = 7;
 
 function randomRockPosition() {
     let randomPosition = Math.floor(Math.random() * 720);
@@ -19,15 +23,25 @@ function createRock() {
 }
 createRock();
 
-// Modificador de velocidade de deslocamento horizontal da nave.
-let modifier = 8;
+function hitCounter() {
+    hitCount += 1;
+    if (hitCount % 5 === 0) {
+        speedModifier();
+    }
+    return hitCount;
+}
+
+function speedModifier() {
+    baseSpeed += 0.2;
+    return baseSpeed.toFixed(1);
+}
 
 // Movimentação horizontal da nave
 window.addEventListener("keydown", (eventOrigin) => {
     switch (eventOrigin.key) {
         case 'Enter': spaceshipBox.style.left = `${390}px`; break;
-        case 'ArrowLeft': spaceshipBox.style.left = `${parseInt(spaceshipBox.style.left) - modifier}px`; break;
-        case 'ArrowRight': spaceshipBox.style.left = `${parseInt(spaceshipBox.style.left) + modifier}px`; break;
+        case 'ArrowLeft': spaceshipBox.style.left = `${parseInt(spaceshipBox.style.left) - baseSpeed}px`; break;
+        case 'ArrowRight': spaceshipBox.style.left = `${parseInt(spaceshipBox.style.left) + baseSpeed}px`; break;
     }
 });
 
@@ -49,8 +63,8 @@ const loop = setInterval(() => {
 
         // Quando o tiro atinge a pedra, ela é removida e criada em um lugar aleatório
         if (diferencaShotToRockV <= 15 && diferencaShotToRockH > -6 && diferencaShotToRockH < 81) {
-            hitCounter += 1;
-            score.innerText = 'Score: ' + hitCounter;
+            score.innerText = 'Score: ' + hitCounter();
+            speed.innerText = 'Speed: ' + baseSpeed.toFixed(1);
             rock.remove();
             shot.remove();
             createRock();
@@ -62,7 +76,8 @@ const loop = setInterval(() => {
     if (diferencaShipToRockH < 68 && rockPositionV < 55 && diferencaShipToRockH > -79) {
         rock.style.animation = 'none';
         //rock.style.bottom = `${rockPositionV}px`
-        hitCounter = 0;
+        hitCount = 0;
+        baseSpeed = 7;
         alert('Game Over!')
     }
 
