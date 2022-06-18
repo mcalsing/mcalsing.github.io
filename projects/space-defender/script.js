@@ -5,8 +5,8 @@ const bullet = document.querySelector('.bullet');
 const gameBoard = document.querySelector('.game-board');
 const score = document.querySelector('.score');
 const speed = document.querySelector('.spaceship-status');
-const btnleft = document.querySelector('.left');
-const btnright = document.querySelector('.right');
+const btnLeft = document.querySelector('.left');
+const btnRight = document.querySelector('.right');
 const btnFire = document.querySelector('.fire');
 
 // Contador de acertos ao asteroide
@@ -156,6 +156,6 @@ function shotBullet(eventOrigin) {
 }
 
 document.addEventListener('click', shotBullet);
-btnleft.addEventListener('mouseover', moveLeftBnt);
-btnright.addEventListener('mouseover', moveRightBnt);
+btnLeft.addEventListener('mousemove', moveLeftBnt);
+btnRight.addEventListener('mousemove', moveRightBnt);
 
