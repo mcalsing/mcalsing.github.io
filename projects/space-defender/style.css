@@ -7,9 +7,9 @@ body {
     background: black;
 }
 .game-board {
-    width: 850px;
+    width: 800px;
     border: 1px solid black;
-    height: 530px;
+    height: 500px;
     margin: 10px auto;
     position: relative;
     overflow: hidden;
@@ -37,12 +37,48 @@ body {
     height: 13px;
     background: gray;
     position: absolute;
-    bottom: 51px;
+    bottom: 47px;
     left: 33px;
+}
+
+.bullet2 {
+    width: 5px;
+    height: 13px;
+    background: gray;
+    position: absolute;
+    bottom: 47px;
+    left: 2px;
+}
+
+.bullet3 {
+    width: 5px;
+    height: 13px;
+    background: gray;
+    position: absolute;
+    bottom: 47px;
+    left: 63px;
 }
 
 .shot {
     animation: bullet-animation 1s linear;
+}
+
+.buttons {
+    margin: 200px 30px 0 0;
+}
+
+.buttons button {
+    width: 60px;
+    height: 35px;
+    margin: 10px;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: right;
 }
 
 .instrucao {
@@ -54,8 +90,10 @@ body {
     color: white;
 }
 
-.speed {
+.spaceship-status {
     color: white;
+    position: absolute;
+    bottom: 0;
 }
 
 @keyframes rock-animation {
