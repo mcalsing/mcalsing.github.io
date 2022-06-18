@@ -156,6 +156,6 @@ function shotBullet(eventOrigin) {
 }
 
 document.addEventListener('click', shotBullet);
-btnLeft.addEventListener('mousemove', moveLeftBnt);
-btnRight.addEventListener('mousemove', moveRightBnt);
+btnLeft.addEventListener('click', moveLeftBnt);
+btnRight.addEventListener('click', moveRightBnt);
 
