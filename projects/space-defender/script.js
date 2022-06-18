@@ -8,6 +8,12 @@ const speed = document.querySelector('.spaceship-status');
 const btnLeft = document.querySelector('.left');
 const btnRight = document.querySelector('.right');
 const btnFire = document.querySelector('.fire');
+//const life = document.querySelector('.life');
+const lifeBox =document.querySelector('.life-box');
+
+
+
+
 
 // Contador de acertos ao asteroide
 let hitCount = 0;
@@ -53,6 +59,14 @@ function moveRightBnt() {
     spaceshipBox.style.left = `${parseInt(spaceshipBox.style.left) + baseSpeed}px`;
 }
 
+function createLives(){
+    const newLife = document.createElement('div');
+    newLife.className = 'life';
+    lifeBox.appendChild(newLife);
+    return newLife;
+}
+// Vidas iniciais
+for (let i = 0; i < 5; i++) createLives();
 
 // Movimentação horizontal da nave
 window.addEventListener("keydown", (eventOrigin) => {
@@ -74,7 +88,17 @@ const loop = setInterval(() => {
     const shotPositionH = spaceshipBox.offsetLeft + 33;
     const shotPositionH2 = spaceshipBox.offsetLeft + 2;
     const shotPositionH3 = spaceshipBox.offsetLeft + 63;
-    
+
+    if (rockPositionV >= 7 && rockPositionV <= 13) {
+        if (document.querySelector('.life') !== null) {
+            document.querySelector('.life').remove();
+        }
+        if (document.querySelectorAll('.life').length <= 0 ){
+            alert('Game Over!');
+            window.location.reload();
+        }
+    }
+
     // Verifica a posição da pedra em relação ao tiro, para aplicar colisão
     if (shot !== null) {
         const shotPositionV = +window.getComputedStyle(shot).bottom.replace('px', '');
@@ -85,33 +109,39 @@ const loop = setInterval(() => {
 
         // Quando o tiro atinge a pedra, ela é removida e criada em um lugar aleatório
         
-        //console.log(diferencaShotToRockH); 
-        //console.log(diferencaShotToRockH2); 
         if (diferencaShotToRockV <= 15 && diferencaShotToRockH > -6 && diferencaShotToRockH < 81) {
             score.innerText = 'Score: ' + hitCounter();
             speed.innerText = 'Spaceship Speed: ' + baseSpeed.toFixed(1);
             //rock.style.bottom = `${rockPositionV}px`;
             rock.remove();
             shot.remove();
+            if (diferencaShotToRockH > 0) {
+                if (document.querySelector('.bullet2') !== null){
+                    document.querySelector('.bullet2').remove();
+                }
+            }
+            else {
+                if (document.querySelector('.bullet3') !== null) {
+                    document.querySelector('.bullet3').remove();
+                }
+            } 
             createRock();
         }
-        else if (diferencaShotToRockV <= 15 && diferencaShotToRockH2 > -4 && hitCount >= 0 &&
+        else if (diferencaShotToRockV <= 15 && diferencaShotToRockH2 > -4 && hitCount >= 20 &&
                 diferencaShotToRockH2 < 81 && document.querySelector('.bullet2') !== null) {
             score.innerText = 'Score: ' + hitCounter();
             speed.innerText = 'Spaceship Speed: ' + baseSpeed.toFixed(1);
             rock.remove();
-            //shot.remove();
             if (document.querySelector('.bullet2') !== null){
                 document.querySelector('.bullet2').remove();
             }
             createRock();
         }
-        else if (diferencaShotToRockV <= 15 && diferencaShotToRockH3 > -4 && hitCount >= 0 &&
+        else if (diferencaShotToRockV <= 15 && diferencaShotToRockH3 > -4 && hitCount >= 20 &&
                 diferencaShotToRockH3 < 81 &&  document.querySelector('.bullet3') !== null) {
             score.innerText = 'Score: ' + hitCounter();
             speed.innerText = 'Spaceship Speed: ' + baseSpeed.toFixed(1);
             rock.remove();
-            //shot.remove();
             if (document.querySelector('.bullet3') !== null){
                 document.querySelector('.bullet3').remove();
             }
@@ -124,9 +154,8 @@ const loop = setInterval(() => {
     if (diferencaShipToRockH < 68 && rockPositionV < 55 && diferencaShipToRockH > -79) {
         rock.style.animation = 'none';
         //rock.style.bottom = `${rockPositionV}px`;
-        hitCount = 0;
-        baseSpeed = 7;
         alert('Game Over!')
+        window.location.reload();  
     }
 
 }, 30);
@@ -138,7 +167,7 @@ function shotBullet(eventOrigin) {
         const newShot = document.createElement('div');
         newShot.className = 'shot bullet';
         spaceshipBox.appendChild(newShot);
-        if (hitCount >= 0) {
+        if (hitCount >= 20) {
             const newShot = document.createElement('div');
             newShot.className = 'shot bullet2';
             spaceshipBox.appendChild(newShot);

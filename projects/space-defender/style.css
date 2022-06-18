@@ -95,6 +95,20 @@ body {
     color: white;
 }
 
+.life-box {
+    position: absolute;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.life {
+    background: red;
+    width: 25px;
+    height: 25px;
+    border: 1px solid black;
+} 
+
 .spaceship-status {
     color: white;
     position: absolute;
