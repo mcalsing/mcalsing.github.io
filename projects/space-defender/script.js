@@ -1,18 +1,12 @@
 const spaceshipBox = document.querySelector('.spaceship-box');
 const bullet = document.querySelector('.bullet');
-//const bullet2 = document.querySelector('.bullet2');
-//const bullet3 = document.querySelector('.bullet3');
 const gameBoard = document.querySelector('.game-board');
 const score = document.querySelector('.score');
 const speed = document.querySelector('.spaceship-status');
 const btnLeft = document.querySelector('.left');
 const btnRight = document.querySelector('.right');
 const btnFire = document.querySelector('.fire');
-//const life = document.querySelector('.life');
-const lifeBox =document.querySelector('.life-box');
-
-
-
+const lifeBox = document.querySelector('.life-box');
 
 
 // Contador de acertos ao asteroide
@@ -20,8 +14,8 @@ let hitCount = 0;
 // Modificador de velocidade de deslocamento horizontal da nave.
 let baseSpeed = 7;
 
-// Seta a posicao inicial da nave, so pelo css ela nao se move.
-spaceshipBox.style.left = `${390}px`;
+// Seta a posicao inicial da nave, pelo css ela nao se move.
+spaceshipBox.style.left = `${365}px`;
 
 function randomRockPosition() {
     let randomPosition = Math.floor(Math.random() * 720);
@@ -38,7 +32,6 @@ function createRock() {
 }
 createRock();
 
-
 function hitCounter() {
     hitCount += 1;
     if (hitCount % 5 === 0) {
@@ -51,7 +44,7 @@ function speedModifier() {
     baseSpeed += 0.2;
     return baseSpeed.toFixed(1);
 }
-
+// Botoes de movimentaçao, so pra mobile
 function moveLeftBnt() {
     spaceshipBox.style.left = `${parseInt(spaceshipBox.style.left) - baseSpeed}px`;
 }
@@ -71,13 +64,12 @@ for (let i = 0; i < 5; i++) createLives();
 // Movimentação horizontal da nave
 window.addEventListener("keydown", (eventOrigin) => {
     switch (eventOrigin.key) {
-        //case 'Enter': spaceshipBox.style.left = `${390}px`; break;
         case 'ArrowLeft': spaceshipBox.style.left = `${parseInt(spaceshipBox.style.left) - baseSpeed}px`; break;
         case 'ArrowRight': spaceshipBox.style.left = `${parseInt(spaceshipBox.style.left) + baseSpeed}px`; break;
     }
 });
 
-// Verifica a posição da rock e da nave a cada 30ms, para aplicar colisão
+// Verifica a posição da rock e da nave a cada 25ms, para aplicar colisão
 const loop = setInterval(() => {
     const shot = document.querySelector('.shot');
     const rock = document.querySelector('.rock');
@@ -89,7 +81,10 @@ const loop = setInterval(() => {
     const shotPositionH2 = spaceshipBox.offsetLeft + 2;
     const shotPositionH3 = spaceshipBox.offsetLeft + 63;
 
-    if (rockPositionV >= 7 && rockPositionV <= 13) {
+    // console.log(rockPositionV.toFixed(1))
+    // if (rockPositionV >= 6.5 && rockPositionV <= 12.8) console.log(rockPositionV.toFixed(1));
+    // Condição para perder vida, não esta funcionando muito bem, melhorar.
+    if (rockPositionV >= 6.5 && rockPositionV <= 12.8) {
         if (document.querySelector('.life') !== null) {
             document.querySelector('.life').remove();
         }
@@ -108,10 +103,9 @@ const loop = setInterval(() => {
         diferencaShotToRockH3 = shotPositionH3 - rockPositionH;
 
         // Quando o tiro atinge a pedra, ela é removida e criada em um lugar aleatório
-        
         if (diferencaShotToRockV <= 15 && diferencaShotToRockH > -6 && diferencaShotToRockH < 81) {
-            score.innerText = 'Score: ' + hitCounter();
-            speed.innerText = 'Spaceship Speed: ' + baseSpeed.toFixed(1);
+            score.innerText = `Score: ${hitCounter()}`;
+            speed.innerText = `Spaceship Speed: ${baseSpeed.toFixed(1)}`;
             //rock.style.bottom = `${rockPositionV}px`;
             rock.remove();
             shot.remove();
@@ -158,7 +152,7 @@ const loop = setInterval(() => {
         window.location.reload();  
     }
 
-}, 30);
+}, 25);
 
 // Cria a div que funciona como um tiro saindo da nave.
 function shotBullet(eventOrigin) {
@@ -167,6 +161,7 @@ function shotBullet(eventOrigin) {
         const newShot = document.createElement('div');
         newShot.className = 'shot bullet';
         spaceshipBox.appendChild(newShot);
+        // Após score 20, ganha duas armas adicionais
         if (hitCount >= 20) {
             const newShot = document.createElement('div');
             newShot.className = 'shot bullet2';
@@ -177,7 +172,6 @@ function shotBullet(eventOrigin) {
         }
         setTimeout(() => {
             if (document.querySelector('.shot') !== null) {
-                //document.querySelector('.shot').remove();
                 document.querySelectorAll('.shot').forEach((e) => e.remove());
             }
         }, 850); // Alcance do tiro

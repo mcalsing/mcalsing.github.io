@@ -13,7 +13,7 @@ body {
     margin: 10px auto;
     position: relative;
     overflow: hidden;
-    background: radial-gradient(ellipse at bottom, #1b2735 25%, #090a0f 80%);
+    background: radial-gradient(ellipse at bottom, #1b2735 5%, #090a0f 80%);
 }
 
 .rock {
@@ -106,7 +106,7 @@ body {
     background: red;
     width: 25px;
     height: 25px;
-    border: 1px solid black;
+    border: 2px solid black;
 } 
 
 .spaceship-status {
