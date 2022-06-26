@@ -12,7 +12,7 @@ const lifeBox = document.querySelector('.life-box');
 // Contador de acertos ao asteroide
 let hitCount = 0;
 // Modificador de velocidade de deslocamento horizontal da nave.
-let baseSpeed = 7;
+let baseSpeed = 8;
 
 // Seta a posicao inicial da nave, pelo css ela nao se move.
 spaceshipBox.style.left = `${365}px`;
@@ -41,7 +41,7 @@ function hitCounter() {
 }
 
 function speedModifier() {
-    baseSpeed += 0.2;
+    baseSpeed += 0.1;
     return baseSpeed.toFixed(1);
 }
 // Botoes de movimentaçao, so pra mobile
@@ -121,7 +121,7 @@ const loop = setInterval(() => {
             } 
             createRock();
         }
-        else if (diferencaShotToRockV <= 15 && diferencaShotToRockH2 > -4 && hitCount >= 20 &&
+        else if (diferencaShotToRockV <= 15 && diferencaShotToRockH2 > -4 && hitCount >= 25 &&
                 diferencaShotToRockH2 < 81 && document.querySelector('.bullet2') !== null) {
             score.innerText = 'Score: ' + hitCounter();
             speed.innerText = 'Spaceship Speed: ' + baseSpeed.toFixed(1);
@@ -131,7 +131,7 @@ const loop = setInterval(() => {
             }
             createRock();
         }
-        else if (diferencaShotToRockV <= 15 && diferencaShotToRockH3 > -4 && hitCount >= 20 &&
+        else if (diferencaShotToRockV <= 15 && diferencaShotToRockH3 > -4 && hitCount >= 25 &&
                 diferencaShotToRockH3 < 81 &&  document.querySelector('.bullet3') !== null) {
             score.innerText = 'Score: ' + hitCounter();
             speed.innerText = 'Spaceship Speed: ' + baseSpeed.toFixed(1);
@@ -162,7 +162,7 @@ function shotBullet(eventOrigin) {
         newShot.className = 'shot bullet';
         spaceshipBox.appendChild(newShot);
         // Após score 20, ganha duas armas adicionais
-        if (hitCount >= 20) {
+        if (hitCount >= 25) {
             const newShot = document.createElement('div');
             newShot.className = 'shot bullet2';
             spaceshipBox.appendChild(newShot);
