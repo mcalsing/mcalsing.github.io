@@ -4,99 +4,99 @@ const pokemons = [
         name: "Pikachu",
         type: 'Electric',
         averageWeight: {
-            value: 6.0,
+            value: 6,
             measurementUnit: "kg"
         },
         image: "https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png",
         moreInfo: "https://bulbapedia.bulbagarden.net/wiki/Pikachu_(Pok%C3%A9mon)"
     },
     {
-        id: 4,
-        name: "Charmander",
-        type: 'Fire',
+        id: 199,
+        name: "Slowking",
+        type: 'Water',
         averageWeight: {
-            value: 8.5,
+            value: 79,
             measurementUnit: "kg"
         },
-        image: "https://cdn2.bulbagarden.net/upload/0/0a/Spr_5b_004.png",
-        moreInfo: "https://bulbapedia.bulbagarden.net/wiki/Charmander_(Pok%C3%A9mon)"
+        image: "https://archives.bulbagarden.net/media/upload/b/b2/Spr_5b_199.png",
+        moreInfo: "https://bulbapedia.bulbagarden.net/wiki/Slowking_(Pok%C3%A9mon)"
     },
     {
-        id: 10,
-        name: "Caterpie",
-        type: 'Bug',
+        id: 130,
+        name: "Gyarados",
+        type: 'Water',
         averageWeight: {
-            value: 2.9,
+            value: 235,
             measurementUnit: "kg"
         },
-        image: "https://cdn2.bulbagarden.net/upload/8/83/Spr_5b_010.png",
-        moreInfo: "https://bulbapedia.bulbagarden.net/wiki/Caterpie_(Pok%C3%A9mon)"
+        image: "https://archives.bulbagarden.net/media/upload/e/e3/Spr_5b_130_m.png",
+        moreInfo: "https://bulbapedia.bulbagarden.net/wiki/Gyarados_(Pok%C3%A9mon)"
     },
     {
-        id: 23,
-        name: "Ekans",
-        type: 'Poison',
+        id: 362,
+        name: "Glalie",
+        type: 'Ice',
         averageWeight: {
-            value: 6.9,
+            value: 256,
             measurementUnit: "kg"
         },
-        image: "https://cdn2.bulbagarden.net/upload/1/18/Spr_5b_023.png",
-        moreInfo: "https://bulbapedia.bulbagarden.net/wiki/Ekans_(Pok%C3%A9mon)"
+        image: "https://archives.bulbagarden.net/media/upload/c/c2/Spr_5b_362.png",
+        moreInfo: "https://bulbapedia.bulbagarden.net/wiki/Glalie_(Pok%C3%A9mon)"
     },
     {
-        id: 65,
-        name: "Alakazam",
-        type: 'Psychic',
+        id: 310,
+        name: "Manectric",
+        type: 'Electric',
         averageWeight: {
-            value: 48.0,
+            value: 42,
             measurementUnit: "kg"
         },
-        image: "https://cdn2.bulbagarden.net/upload/8/88/Spr_5b_065_m.png",
-        moreInfo: "https://bulbapedia.bulbagarden.net/wiki/Alakazam_(Pok%C3%A9mon)"
+        image: "https://archives.bulbagarden.net/media/upload/7/71/Spr_4d_310.png",
+        moreInfo: "https://bulbapedia.bulbagarden.net/wiki/Manectric_(Pok%C3%A9mon)"
     },
     {
-        id: 151,
-        name: "Mew",
-        type: 'Psychic',
+        id: 171,
+        name: "Lanturn",
+        type: 'Eletric',
         averageWeight: {
-            value: 4.0,
+            value: 22,
             measurementUnit: "kg"
         },
-        image: "https://cdn2.bulbagarden.net/upload/4/43/Spr_5b_151.png",
-        moreInfo: "https://bulbapedia.bulbagarden.net/wiki/Mew_(Pok%C3%A9mon)"
+        image: "https://archives.bulbagarden.net/media/upload/0/01/Spr_5b_171.png",
+        moreInfo: "https://bulbapedia.bulbagarden.net/wiki/Lanturn_(Pok%C3%A9mon)"
     },
     {
         id: 78,
-        name: "Rapidash",
-        type: 'Fire',
+        name: "Jynx",
+        type: 'Ice',
         averageWeight: {
-            value: 95.0,
+            value: 40,
             measurementUnit: "kg"
         },
-        image: "https://cdn2.bulbagarden.net/upload/5/58/Spr_5b_078.png",
-        moreInfo: "https://bulbapedia.bulbagarden.net/wiki/Rapidash_(Pok%C3%A9mon)"
+        image: "https://archives.bulbagarden.net/media/upload/0/0e/Spr_5b_124.png",
+        moreInfo: "https://bulbapedia.bulbagarden.net/wiki/Jynx_(Pok%C3%A9mon)"
     },
     {
-        id: 143,
-        name: "Snorlax",
-        type: 'Normal',
+        id: 9,
+        name: "Blastoise",
+        type: 'Water',
         averageWeight: {
-            value: 460.0,
+            value: 85,
             measurementUnit: "kg"
         },
-        image: "https://cdn2.bulbagarden.net/upload/4/40/Spr_5b_143.png",
-        moreInfo: "https://bulbapedia.bulbagarden.net/wiki/Snorlax_(Pok%C3%A9mon)"
+        image: "https://archives.bulbagarden.net/media/upload/3/3d/Spr_5b_009.png",
+        moreInfo: "https://bulbapedia.bulbagarden.net/wiki/Blastoise_(Pok%C3%A9mon)"
     },
     {
-        id: 148,
-        name: "Dragonair",
-        type: 'Dragon',
+        id: 614,
+        name: "Beartic",
+        type: 'Ice',
         averageWeight: {
-            value: 16.5,
+            value: 260,
             measurementUnit: "kg"
         },
-        image: "https://cdn2.bulbagarden.net/upload/2/2c/Spr_5b_148.png",
-        moreInfo: "https://bulbapedia.bulbagarden.net/wiki/Dragonair_(Pok%C3%A9mon)"
+        image: "https://archives.bulbagarden.net/media/upload/d/dd/Spr_5b_614.png",
+        moreInfo: "https://bulbapedia.bulbagarden.net/wiki/Beartic_(Pok%C3%A9mon)"
     }
   ];
   

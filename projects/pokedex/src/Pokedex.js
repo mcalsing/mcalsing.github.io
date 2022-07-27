@@ -1,30 +1,63 @@
-// arquivo Pokedex.js
 import React from 'react';
-// import Image from './Image'
-
-// import PropTypes from 'prop-types';
+import pokeData from './data'
+import Pokemon from './Pokemon'
 
 class Pokedex extends React.Component {
-  render() {
-    const { image, name, type, averageWeight: { value, measurementUnit } } = this.props.pokeElement;
+  constructor() {
+    super()
+    this.state = {pokePosition: 0}
+  } 
+ 
+  handleClick = () => {
+    this.setState((estadoAnterior, _props) => ({
+      pokePosition: estadoAnterior.pokePosition +1,
+    }))
+  }
+
+  handleLoginClick = () => {
+    this.setState({isLoggedIn: true});
+  }
+
+  handleLogoutClick = () => {
+    this.setState({isLoggedIn: false});
+  }
+
+  render () {
+
+    // PokemonElementes eh array de elementos html
+    const pokeHTMLElements = pokeData.map((pokemon) => <Pokemon key={pokemon.id} pokeElement={pokemon} />)
+    const waterType = pokeData.filter(pokemon => pokemon.type.includes('Water')).map((pokemon) => <Pokemon key={pokemon.id} pokeElement={pokemon} />)
+    const iceType = pokeData.filter(pokemon => pokemon.type.includes('Ice')).map((pokemon) => <Pokemon key={pokemon.id} pokeElement={pokemon} />)
+
+    
 
     return (
-      <section className = 'pokemon-card'>
-          <p> {name} </p>
-        <img className='pokemon-img' src={image} alt={name}/>
-        <div>
-          {/* <Image source={image}/> */}
-          <p> {type} </p>
-          <p> Avarage Weight: {value}{measurementUnit} </p>
+      <main>
+        <h1>Pokedex</h1>
+        <div className='pokedex'>
+          {pokeHTMLElements[this.state.pokePosition]}
+          {waterType[this.state.pokePosition]}
+          {iceType[this.state.pokePosition]}
         </div>
-      </section>
-    );
+        <button className="btn-next" onClick={this.handleClick}>Proximo</button>
+        <button className="btn-next" onClick={this.changeFire}>Fire</button>
+        <button className="btn-next" onClick={this.changePsychic}>Psychic</button>
+      </main>
+    )
   }
-  /* Pokedex.propTypes = {
-    user: PropTypes.string.isRequired,
-    product: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-  } */
 }
 
-export default Pokedex; 
+export default Pokedex;
+// <Pokedex pokemon={pokemons.name} type={pokemons.type} weight={pokemons.averageWeight}/>
+// <Pokedex pokemon={pokemons} />
+// <Pokedex namePoke={pokeData[0].name} typePoke={pokeData[0].type} imagePoke={pokeData[0].image} />
+
+
+/* pokeData.map(pokemon => (
+  <div className='pokedex'>
+    <Pokedex namePoke={pokemon.name} 
+             typePoke={pokemon.type} 
+             imagePoke={pokemon.image}
+             weightPoke={pokemon.averageWeight}
+    />
+  </div> */

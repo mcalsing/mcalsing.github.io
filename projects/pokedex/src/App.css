@@ -39,3 +39,8 @@ code {
 .pokemon-img {
   width: 150px;
 }
+
+.btn-next {
+  padding: 10px;
+  text-align: center;
+}
