@@ -18,6 +18,7 @@ code {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .pokemon-card {
@@ -30,6 +31,7 @@ code {
   flex-grow: 3;
   justify-content: space-between;
   align-items: center;
+  max-width: 300px;
 }
 
 .pokemon-card > div {
@@ -42,5 +44,9 @@ code {
 
 .btn-next {
   padding: 10px;
+  text-align: center;
+}
+
+.main-class {
   text-align: center;
 }

@@ -1,3 +1,4 @@
+import { typeImplementation } from '@testing-library/user-event/dist/type/typeImplementation';
 import React from 'react';
 import pokeData from './data'
 import Pokemon from './Pokemon'
@@ -5,43 +6,43 @@ import Pokemon from './Pokemon'
 class Pokedex extends React.Component {
   constructor() {
     super()
-    this.state = {pokePosition: 0}
+    this.state = {
+      pokePosition: 0,
+      filter: '',
+    }
   } 
  
-  handleClick = () => {
+  handleClick = (event) => {
     this.setState((estadoAnterior, _props) => ({
       pokePosition: estadoAnterior.pokePosition +1,
+
     }))
   }
-
-  handleLoginClick = () => {
-    this.setState({isLoggedIn: true});
-  }
-
-  handleLogoutClick = () => {
-    this.setState({isLoggedIn: false});
+  
+  filterType = (type) => {
+    this.setState({
+      filter: type, 
+    })
   }
 
   render () {
 
+    const { pokePosition, filter } = this.state;
     // PokemonElementes eh array de elementos html
-    const pokeHTMLElements = pokeData.map((pokemon) => <Pokemon key={pokemon.id} pokeElement={pokemon} />)
-    const waterType = pokeData.filter(pokemon => pokemon.type.includes('Water')).map((pokemon) => <Pokemon key={pokemon.id} pokeElement={pokemon} />)
-    const iceType = pokeData.filter(pokemon => pokemon.type.includes('Ice')).map((pokemon) => <Pokemon key={pokemon.id} pokeElement={pokemon} />)
-
-    
+    // const pokeHTMLElements = pokeData.map((pokemon) => <Pokemon key={pokemon.id} pokeElement={pokemon} />)
+    const filteredType = pokeData.filter(pokemon => pokemon.type.includes(filter))
+      .map((pokemon) => <Pokemon key={pokemon.id} pokeElement={pokemon} />)
 
     return (
-      <main>
+      <main className="main-class">
         <h1>Pokedex</h1>
+        <button onClick={ () => this.filterType('')}>All</button>
+        <button onClick={ () => this.filterType('Water')}>Water</button>
+        <button onClick={ () => this.filterType('Ice')}>Ice</button>
         <div className='pokedex'>
-          {pokeHTMLElements[this.state.pokePosition]}
-          {waterType[this.state.pokePosition]}
-          {iceType[this.state.pokePosition]}
+          {filteredType[pokePosition]}        
         </div>
-        <button className="btn-next" onClick={this.handleClick}>Proximo</button>
-        <button className="btn-next" onClick={this.changeFire}>Fire</button>
-        <button className="btn-next" onClick={this.changePsychic}>Psychic</button>
+        <button className="btn-next" onClick={this.handleClick}>Proximo</button> 
       </main>
     )
   }
