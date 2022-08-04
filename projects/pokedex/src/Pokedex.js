@@ -1,4 +1,3 @@
-import { typeImplementation } from '@testing-library/user-event/dist/type/typeImplementation';
 import React from 'react';
 import pokeData from './data'
 import Pokemon from './Pokemon'
