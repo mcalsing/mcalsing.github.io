@@ -11,7 +11,7 @@ function App() {
 
       <Route path="/" render={() => <Pokedex />} />
 
-      <Route path="/pokeData/:id" componet={PokemonDetails} />
+      <Route path="/pokemons/:id" component={PokemonDetails} />
 
       {/* <Route path="/" componet={Pokedex} /> */}
       {/* <Pokedex /> */}
